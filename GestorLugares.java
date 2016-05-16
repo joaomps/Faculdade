@@ -1,5 +1,7 @@
 package Projeto8;
 
+import java.util.ArrayList;
+
 public class GestorLugares {
 	private int escaloes;
 	private int nLugares;
@@ -8,6 +10,7 @@ public class GestorLugares {
 	private int[] escalaoN;
 	private BidirectionalHashMap<Integer, String> map;
 	private Lugar[] lugares;
+	private ArrayList<Funcionario> funcionarios;
 
 	public GestorLugares(int escaloes, int nLugares, int estrategiaAtribuicao) {
 		this.escaloes = escaloes;
@@ -16,6 +19,7 @@ public class GestorLugares {
 		escalaoN = new int[escaloes];
 		map = new BidirectionalHashMap<>();
 		lugares = new Lugar[nLugares];
+		funcionarios = new ArrayList<Funcionario>();
 	}
 
 	public int totalAtribuidos() {
@@ -27,24 +31,23 @@ public class GestorLugares {
 	}
 
 	public boolean registarFuncionario(String nome, int escalao) {
-		if(Funcionario.obterNome().equals(nome)){
-			return false;
+		for(int i = 0; i<funcionarios.size(); i++){
+			if(funcionarios.get(i).obterNome().equals(nome)){
+				return false;
+			}
 		}
-		else
-		{
-			Funcionario func = new Funcionario(nome, escalao);
-			return true;
-		}
+		funcionarios.add(new Funcionario(nome, escalao));
+		return true;
 	}
 
 	public boolean atribuirLugar(String nome) {
 		int noSpacesFilas = nLugares/escaloes;
 		if(estrategiaAtribuicao == 1){
-			
+
 		}
 		else
 		{
-			
+
 		}
 		return false;
 	}
